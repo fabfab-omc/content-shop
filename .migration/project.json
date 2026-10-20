@@ -2,10 +2,10 @@
   "type": "xwalk",
   "sites": {
     "content-shop": {
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
       "previewOrg": "fabfab-omc",
       "previewSite": "content-shop",
-      "contentHostUrl": "author-p130360-e1272151.adobeaemcloud.com",
-      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+      "contentHostUrl": "author-p229952-e2327009.adobeaemcloud.com"
     }
   }
 }
