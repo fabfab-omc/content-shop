@@ -22,6 +22,20 @@ export default function decorate(block) {
     });
     if (li.children.length) ul.append(li);
   });
+  // split a leading index ("01 Campaign imagery") into number + label spans
+  ul.querySelectorAll('.cards-gallery-card-body p').forEach((p) => {
+    if (p.children.length) return;
+    const match = p.textContent.trim().match(/^(\d+)\s+(.+)$/);
+    if (!match) return;
+    const [, num, text] = match;
+    const index = document.createElement('span');
+    index.className = 'cards-gallery-card-index';
+    index.textContent = num;
+    const label = document.createElement('span');
+    label.className = 'cards-gallery-card-label';
+    label.textContent = text;
+    p.replaceChildren(index, label);
+  });
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '900' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));

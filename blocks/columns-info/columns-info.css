@@ -1,23 +1,111 @@
-.columns-info > div {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+/* columns-info: label + heading beside a lead paragraph and metadata row */
+
+/* mobile: stacked */
+.columns-info > div > .columns-info-col-2 {
+  margin-top: 28px;
 }
 
-.columns-info img {
+/* eyebrow label above the heading */
+.columns-info .columns-info-col-1 > p:first-child {
   display: block;
-  width: 100%;
-  height: auto;
+  margin-bottom: 20px;
+  color: var(--brand-eyebrow);
+  font-size: var(--eyebrow-font-size);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: var(--eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.columns-info .columns-info-col-1 h2 {
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 1.04;
+}
+
+.columns-info .columns-info-period {
+  color: #8c9e72;
+}
+
+/* lead paragraph */
+.columns-info .columns-info-col-2 > p:first-child {
+  max-width: 740px;
+  font-family: var(--heading-font-family);
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.7px;
+}
+
+/* metadata row (decorated from "Label: Value" paragraphs) */
+.columns-info .columns-info-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 28px 0 0;
+  padding-top: 23px;
+  border-top: 1px solid var(--brand-line);
+}
+
+.columns-info .columns-info-metadata > div {
+  flex: 1;
+  min-width: 90px;
+}
+
+.columns-info .columns-info-metadata dt {
+  margin-bottom: 9px;
+  color: #839095;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.columns-info .columns-info-metadata dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (width >= 600px) {
+  .columns-info > div {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 7%;
+  }
+
+  .columns-info > div > .columns-info-col-2 {
+    margin-top: 0;
+  }
+
+  .columns-info .columns-info-col-1 > p:first-child {
+    margin-bottom: 27px;
+  }
+
+  .columns-info .columns-info-col-1 h2 {
+    font-size: clamp(38px, 4.4vw, 64px);
+  }
+
+  .columns-info .columns-info-col-2 > p:first-child {
+    font-size: clamp(21px, 2.1vw, 30px);
+  }
+
+  .columns-info .columns-info-metadata {
+    gap: 35px;
+    margin-top: 39px;
+  }
+
+  .columns-info .columns-info-metadata > div {
+    min-width: 100px;
+  }
+
+  .columns-info .columns-info-metadata dt {
+    font-size: 9px;
+  }
 }
 
 @media (width >= 900px) {
   .columns-info > div {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 48px;
-  }
-
-  .columns-info > div > div {
-    flex: 1;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 9%;
   }
 }

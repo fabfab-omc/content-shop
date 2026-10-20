@@ -1,0 +1,81 @@
+:root {
+  /* brand palette */
+  --brand-ink: #102b41;
+  --brand-navy: #072238;
+  --brand-paper: #f5f3ee;
+  --brand-white: #fff;
+  --brand-muted: #75828a;
+  --brand-eyebrow: #78858c;
+  --brand-note: #929c99;
+  --brand-line: #d9dedc;
+  --brand-accent: #cce3a6;
+  --brand-focus: #467db0;
+  --brand-on-dark: #fff;
+  --brand-on-dark-muted: #8ba2b1;
+  --brand-on-dark-link: #a2b5c1;
+
+  /* colors */
+  --background-color: var(--brand-paper);
+  --light-color: var(--brand-paper);
+  --dark-color: var(--brand-navy);
+  --text-color: var(--brand-ink);
+  --link-color: inherit;
+  --link-hover-color: inherit;
+
+  /* fonts */
+  --body-font-family: 'VW Text', vw-text-fallback, arial, sans-serif;
+  --heading-font-family: 'VW Head', vw-head-fallback, arial, sans-serif;
+
+  /* body sizes */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 13px;
+  --body-font-size-xs: 9px;
+
+  /* heading sizes (mobile) */
+  --heading-font-size-xxl: clamp(62px, 17vw, 100px);
+  --heading-font-size-xl: 45px;
+  --heading-font-size-l: 15px;
+  --heading-font-size-m: 15px;
+  --heading-font-size-s: 14px;
+  --heading-font-size-xs: 13px;
+  --heading-letter-spacing: -0.035em;
+
+  /* eyebrow labels */
+  --eyebrow-font-size: 8px;
+  --eyebrow-letter-spacing: 2px;
+
+  /* section spacing */
+  --section-padding-block: 54px;
+  --section-padding-inline: 7%;
+
+  /* nav height: no header yet; the temporary one measured 102px / 80px / 93px */
+  --nav-height: 0px;
+}
+
+@media (width >= 600px) {
+  :root {
+    --heading-font-size-xxl: 100px;
+    --heading-font-size-xl: clamp(38px, 4.4vw, 64px);
+    --heading-font-size-l: 17px;
+    --heading-font-size-m: 17px;
+    --heading-font-size-s: 15px;
+    --heading-font-size-xs: 14px;
+    --eyebrow-font-size: 9px;
+    --section-padding-block: 70px;
+    --section-padding-inline: 6%;
+  }
+}
+
+@media (width >= 900px) {
+  :root {
+    --heading-font-size-xxl: clamp(80px, 9.6vw, 150px);
+    --section-padding-block: 100px;
+    --section-padding-inline: 7%;
+  }
+}
+
+@media (width >= 1700px) {
+  :root {
+    --section-padding-inline: max(7%, calc((100vw - 1450px) / 2));
+  }
+}

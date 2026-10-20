@@ -1,24 +1,110 @@
+/* mobile base: source @media (max-width: 650px) */
 .cards-gallery > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
 }
 
-.cards-gallery .cards-gallery-card-image {
-  line-height: 0;
+.cards-gallery > ul > li:nth-child(2) {
+  padding-top: 30px;
+}
+
+.cards-gallery > ul > li:nth-child(3) {
+  grid-column: 1 / -1;
+  padding-top: 15px;
+}
+
+.cards-gallery .cards-gallery-card-image p {
+  margin: 0;
+}
+
+.cards-gallery .cards-gallery-card-image picture {
+  display: block;
 }
 
 .cards-gallery .cards-gallery-card-image img {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  height: 210px;
   object-fit: cover;
 }
 
-@media (width >= 900px) {
+.cards-gallery > ul > li:nth-child(2) .cards-gallery-card-image img {
+  height: 240px;
+}
+
+.cards-gallery > ul > li:nth-child(3) .cards-gallery-card-image img {
+  height: 220px;
+}
+
+.cards-gallery .cards-gallery-card-body {
+  margin-top: 15px;
+}
+
+.cards-gallery .cards-gallery-card-body p {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  font-size: 8px;
+  line-height: normal;
+  color: #7b8987;
+}
+
+.cards-gallery .cards-gallery-card-label {
+  font-size: 6px;
+  color: #9da7a0;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+/* tablet: source @media (max-width: 1000px) */
+@media (width >= 600px) {
   .cards-gallery > ul {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1.2fr 0.85fr 1fr;
+    gap: 18px;
+  }
+
+  .cards-gallery > ul > li:nth-child(2) {
+    padding-top: 58px;
+  }
+
+  .cards-gallery > ul > li:nth-child(3) {
+    grid-column: auto;
+    padding-top: 25px;
+  }
+
+  .cards-gallery .cards-gallery-card-image img,
+  .cards-gallery > ul > li:nth-child(3) .cards-gallery-card-image img {
+    height: 230px;
+  }
+
+  .cards-gallery > ul > li:nth-child(2) .cards-gallery-card-image img {
+    height: 280px;
+  }
+
+  .cards-gallery .cards-gallery-card-body p {
+    gap: 20px;
+    font-size: 9px;
+  }
+
+  .cards-gallery .cards-gallery-card-label {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+}
+
+/* desktop: source base rules */
+@media (width >= 900px) {
+  .cards-gallery .cards-gallery-card-image img,
+  .cards-gallery > ul > li:nth-child(3) .cards-gallery-card-image img {
+    height: 310px;
+  }
+
+  .cards-gallery > ul > li:nth-child(2) .cards-gallery-card-image img {
+    height: 360px;
   }
 }

@@ -18,6 +18,12 @@ export default function decorate(block) {
         div.remove();
       } else {
         div.className = 'cards-features-card-body';
+        // lead paragraph ahead of the title: a numeric index ("03") or a metric ("585 km")
+        const lead = div.firstElementChild;
+        if (lead?.tagName === 'P' && lead.nextElementSibling?.matches('h2, h3, h4, h5, h6')) {
+          const isNumber = /^\d+$/.test(lead.textContent.trim());
+          lead.classList.add(isNumber ? 'cards-features-card-number' : 'cards-features-card-metric');
+        }
       }
     });
     if (li.children.length) ul.append(li);

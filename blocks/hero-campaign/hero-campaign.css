@@ -1,43 +1,178 @@
-.hero-campaign-container .hero-campaign-wrapper {
-  max-width: unset;
-  padding: 0;
-}
-
+/* hero-campaign: values from source .hero-section (mobile first) */
 .hero-campaign {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: 500px;
-  padding: 40px 24px;
-  box-sizing: border-box;
+  height: 640px;
+  max-height: calc(100svh - var(--nav-height));
   overflow: hidden;
+  background: var(--brand-navy);
+  color: var(--brand-white);
 }
 
-.hero-campaign .hero-campaign-media {
+/* background photo */
+.hero-campaign .hero-campaign-media,
+.hero-campaign .hero-campaign-media > div,
+.hero-campaign .hero-campaign-media p,
+.hero-campaign .hero-campaign-media picture {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  margin: 0;
 }
 
-.hero-campaign .hero-campaign-media picture,
 .hero-campaign .hero-campaign-media img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 58% 50%;
 }
 
+/* source .hero-gradient */
+.hero-campaign .hero-campaign-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, #001625d9, transparent 75%),
+    linear-gradient(90deg, #00162540, transparent);
+  pointer-events: none;
+}
+
+/* overlaid copy: full-size layer so the caption can anchor to the hero corner */
 .hero-campaign .hero-campaign-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: absolute;
+  inset: 0;
 }
 
+.hero-campaign .hero-campaign-content > div {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0 0 55px 7%;
+}
+
+.hero-campaign .hero-campaign-content > div > * {
+  max-width: 90%;
+}
+
+.hero-campaign .hero-campaign-eyebrow {
+  margin: 0 0 18px;
+  color: #e6eceb;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.hero-campaign h1 {
+  color: var(--brand-white);
+}
+
+.hero-campaign .hero-campaign-period {
+  color: var(--brand-accent);
+}
+
+.hero-campaign .hero-campaign-cta {
+  margin: 24px 0 0;
+}
+
+.hero-campaign .hero-campaign-cta a:any-link {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  color: var(--brand-white);
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.hero-campaign .hero-campaign-arrow {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fff6;
+  border-radius: 50%;
+  font-size: 17px;
+}
+
+.hero-campaign .hero-campaign-caption {
+  position: absolute;
+  right: 7%;
+  bottom: 20px;
+  margin: 0;
+  color: #ffffffb0;
+  font-size: 7px;
+  letter-spacing: 0.7px;
+}
+
+/* tablet: source max-width 1000px rules + desktop copy values */
+@media (width >= 600px) {
+  .hero-campaign {
+    height: 75svh;
+    min-height: 570px;
+    max-height: 740px;
+  }
+
+  .hero-campaign .hero-campaign-media img {
+    object-position: 55% 50%;
+  }
+
+  .hero-campaign .hero-campaign-media::after {
+    background:
+      linear-gradient(90deg, rgb(0 16 30 / 65%), transparent 75%),
+      linear-gradient(0deg, rgb(0 16 30 / 70%), transparent 55%);
+  }
+
+  .hero-campaign .hero-campaign-content > div {
+    padding-bottom: 70px;
+  }
+
+  .hero-campaign .hero-campaign-eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.8px;
+  }
+
+  .hero-campaign .hero-campaign-cta {
+    margin-top: 35px;
+  }
+
+  .hero-campaign .hero-campaign-cta a:any-link {
+    font-size: 11px;
+  }
+
+  .hero-campaign .hero-campaign-caption {
+    right: 5%;
+    bottom: 35px;
+    font-size: 9px;
+  }
+}
+
+/* desktop: hero fills the viewport below the header */
 @media (width >= 900px) {
   .hero-campaign {
-    min-height: 80vh;
-    padding: 64px 32px;
+    height: min(780px, calc(100svh - var(--nav-height)));
+    min-height: 540px;
+    max-height: 780px;
+  }
+}
+
+@media (width >= 1700px) {
+  .hero-campaign {
+    height: 850px;
+  }
+
+  .hero-campaign .hero-campaign-media img {
+    object-position: center 60%;
+  }
+
+  .hero-campaign .hero-campaign-content > div {
+    padding-left: 10%;
   }
 }

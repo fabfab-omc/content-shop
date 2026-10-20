@@ -205,6 +205,15 @@ export default {
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 
+    // Source-origin images are only reachable locally; point them at the
+    // copies hosted alongside the content in /media-da/.
+    const sourceOrigin = new URL(params.originalURL).origin;
+    main.querySelectorAll('img[src]').forEach((img) => {
+      const src = new URL(img.getAttribute('src'), params.originalURL);
+      if (src.origin !== sourceOrigin) return;
+      img.setAttribute('src', `/media-da/${src.pathname.split('/').pop()}`);
+    });
+
     const rawPath = new URL(params.originalURL).pathname
       .replace(/\/$/, '')
       .replace(/\.html?$/, '');

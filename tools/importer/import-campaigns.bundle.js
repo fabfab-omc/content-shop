@@ -534,6 +534,12 @@ var CustomImportScript = (() => {
       WebImporter.rules.createMetadata(main, document);
       WebImporter.rules.transformBackgroundImages(main, document);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
+      const sourceOrigin = new URL(params.originalURL).origin;
+      main.querySelectorAll("img[src]").forEach((img) => {
+        const src = new URL(img.getAttribute("src"), params.originalURL);
+        if (src.origin !== sourceOrigin) return;
+        img.setAttribute("src", `/media-da/${src.pathname.split("/").pop()}`);
+      });
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
       const path = WebImporter.FileUtils.sanitizePath(rawPath === "" ? "/index" : rawPath);
       return [{
