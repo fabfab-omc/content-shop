@@ -1,0 +1,8 @@
+{
+  "mappings": [
+    "/content/campaigns/:/"
+  ],
+  "includes": [
+    "/content/campaigns/"
+  ]
+}
