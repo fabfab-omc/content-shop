@@ -1,0 +1,147 @@
+{
+  "templates": [
+    {
+      "name": "campaigns",
+      "urls": [
+        "http://localhost:8765/campaigns/id-tiguan.html"
+      ],
+      "representativeUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+      "description": "Single-page campaign overviews (hero, info columns, feature highlights, image gallery, closing statement)",
+      "blocks": [
+        {
+          "name": "hero-campaign",
+          "instances": [
+            "section.hero-section"
+          ]
+        },
+        {
+          "name": "columns-info",
+          "instances": [
+            "section.general"
+          ]
+        },
+        {
+          "name": "columns-chapter",
+          "instances": [
+            "section.strategy"
+          ]
+        },
+        {
+          "name": "columns-media-split",
+          "instances": [
+            "section.creative"
+          ]
+        },
+        {
+          "name": "cards-features",
+          "instances": [
+            "section.highlights .features"
+          ]
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            "section.visual-story"
+          ]
+        }
+      ],
+      "urlPattern": "/campaigns/*",
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Hero",
+          "selector": [
+            "section.hero-section"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-campaign"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "General info",
+          "selector": [
+            "section.general",
+            "#general"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-info"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "Campaign strategy",
+          "selector": [
+            "section.strategy",
+            "#strategy"
+          ],
+          "style": "white",
+          "blocks": [
+            "columns-chapter"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc4",
+          "name": "Creative platform",
+          "selector": [
+            "section.creative",
+            "#creative"
+          ],
+          "style": "dark",
+          "blocks": [
+            "columns-media-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "Product highlights",
+          "selector": [
+            "section.highlights",
+            "#highlights"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-features"
+          ],
+          "defaultContent": [
+            "section.highlights .section-heading",
+            "section.highlights .claims-note"
+          ]
+        },
+        {
+          "id": "rc6",
+          "name": "Visual story",
+          "selector": [
+            "section.visual-story"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-gallery"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc7",
+          "name": "Closing",
+          "selector": [
+            "section.closing"
+          ],
+          "style": "dark, centered",
+          "blocks": [],
+          "defaultContent": [
+            "section.closing"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
+}

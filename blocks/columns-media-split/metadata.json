@@ -1,0 +1,53 @@
+{
+  "variantName": "columns-media-split",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "50/50 text-and-image split; text column with label, heading and body beside an image with caption",
+    "notes": [
+      "50/50 side-by-side text and image layout on a navy section background."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row, two cells: cell 1 = label, H2, body, sign-off paragraph; cell 2 = image + caption paragraph",
+    "cells": [
+      {
+        "col1": [
+          "p: 03 / CREATIVE PLATFORM",
+          "h2: Instantly Familiar.",
+          "p: body text",
+          "p: ID. Tiguan / THE CENTRAL IDEA"
+        ],
+        "col2": [
+          "img (creative-visual)",
+          "p: All new. Instantly Familiar."
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-media-split"
+  ],
+  "usage": "50/50 text-and-image split; text column with label, heading and body beside an image with caption.",
+  "reuseGuidance": "Reuse for equal-width text vs image layouts; pair with section style dark when on a dark band.",
+  "sourceUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+  "sourceSelectors": [
+    "#creative"
+  ],
+  "blockStructure": {
+    "source": "get_block_details /block-collection/columns (xwalk library)",
+    "rows": [
+      [
+        "column 1 content",
+        "column 2 content"
+      ]
+    ],
+    "notes": "One row, two cells, each holding text/images/buttons/titles; no nested blocks."
+  },
+  "sectionMetadata": [
+    {
+      "style": "dark"
+    }
+  ]
+}

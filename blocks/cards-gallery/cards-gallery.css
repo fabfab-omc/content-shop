@@ -1,0 +1,24 @@
+.cards-gallery > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-gallery .cards-gallery-card-image {
+  line-height: 0;
+}
+
+.cards-gallery .cards-gallery-card-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

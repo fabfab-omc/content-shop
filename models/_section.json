@@ -33,6 +33,18 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "White",
+              "value": "white"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
             }
           ]
         }
@@ -50,7 +62,13 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "hero-campaign",
+        "columns-info",
+        "columns-chapter",
+        "columns-media-split",
+        "cards-features",
+        "cards-gallery"
       ]
     }
   ]

@@ -1,9 +1,11 @@
 {
+  "type": "xwalk",
   "sites": {
     "content-shop": {
       "previewOrg": "fabfab-omc",
       "previewSite": "content-shop",
-      "contentHostUrl": "author-p130360-e1272151.adobeaemcloud.com"
+      "contentHostUrl": "author-p130360-e1272151.adobeaemcloud.com",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
     }
   }
 }

@@ -1,0 +1,23 @@
+.columns-info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-info img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (width >= 900px) {
+  .columns-info > div {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .columns-info > div > div {
+    flex: 1;
+  }
+}

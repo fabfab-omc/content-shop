@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "http://localhost:8765/campaigns/id-tiguan.html",
+  "path": "campaigns/id-tiguan",
+  "timestamp": "2026-10-20T16:09:00.367Z",
+  "title": "ID. Tiguan — Instantly Familiar | Campaign overview",
+  "template": "campaigns",
+  "blocks": [
+    "hero-campaign",
+    "columns-info",
+    "columns-chapter",
+    "columns-media-split",
+    "cards-features",
+    "cards-gallery"
+  ]
+}

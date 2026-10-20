@@ -1,0 +1,53 @@
+{
+  "variantName": "columns-chapter",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Narrative chapter: narrow chapter-label column beside a statement heading, image and annotation",
+    "notes": [
+      "Side-by-side layout: narrow chapter-label column beside statement, image and annotation. Solid white band with padding on paper page, hence style white."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row, two cells: cell 1 = chapter label + short tagline; cell 2 = H2 statement, image, annotation paragraphs",
+    "cells": [
+      {
+        "col1": [
+          "p: 02 / CAMPAIGN STRATEGY",
+          "p: The thinking behind the feeling."
+        ],
+        "col2": [
+          "h2: Exploring real life's beauty means embracing every moment, big or small.",
+          "img.strategy-photo",
+          "p: annotation text",
+          "p: THE PRODUCT ROLE"
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-chapter"
+  ],
+  "usage": "Narrative chapter: narrow chapter-label column beside a statement heading, image and annotation.",
+  "reuseGuidance": "Reuse when a narrow label column sits beside a wide content column.",
+  "sourceUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+  "sourceSelectors": [
+    "#strategy"
+  ],
+  "blockStructure": {
+    "source": "get_block_details /block-collection/columns (xwalk library)",
+    "rows": [
+      [
+        "column 1 content",
+        "column 2 content"
+      ]
+    ],
+    "notes": "One row, two cells, each holding text/images/buttons/titles; no nested blocks."
+  },
+  "sectionMetadata": [
+    {
+      "style": "white"
+    }
+  ]
+}

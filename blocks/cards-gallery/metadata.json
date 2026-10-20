@@ -1,0 +1,45 @@
+{
+  "variantName": "cards-gallery",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Row of image + short caption figures (visual story gallery)",
+    "notes": [
+      "Repeating image + caption structure (3 figures) laid out side by side."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row per figure (3 on source); cell 1 = image, cell 2 = caption paragraph",
+    "cells": [
+      {
+        "rows": 3,
+        "row": {
+          "image": "figure > img",
+          "text": [
+            "p: 01 Campaign imagery"
+          ]
+        }
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-gallery"
+  ],
+  "usage": "Row of image + short caption figures (visual story gallery).",
+  "reuseGuidance": "Reuse for image-led galleries with short captions.",
+  "sourceUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+  "sourceSelectors": [
+    "#top > section.visual-story"
+  ],
+  "blockStructure": {
+    "source": "get_block_details /block-collection/cards (xwalk library)",
+    "rows": [
+      [
+        "image (reference + imageAlt), may be empty",
+        "text (richtext)"
+      ]
+    ],
+    "notes": "One row per card; empty image cell must still be included."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "variantName": "hero-campaign",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Campaign page opener: full-bleed background photo with eyebrow, H1 headline, CTA link and caption overlaid",
+    "notes": [
+      "Full-bleed background photo with overlaid headline and CTA; the background belongs to the hero block, so no section metadata. Text (eyebrow, H1, link, caption) is authored in the hero text cell."
+    ]
+  },
+  "contentPattern": {
+    "structure": "row 1 = background image (with alt); row 2 = rich text (eyebrow paragraph, H1, CTA link, caption paragraph)",
+    "cells": [
+      {
+        "image": "img.hero-photo",
+        "text": [
+          "p: The all-new electric ID. Tiguan",
+          "h1: Instantly Familiar.",
+          "a: Explore the campaign (#general)",
+          "p: A new chapter. A familiar feeling."
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "hero-campaign"
+  ],
+  "usage": "Campaign page opener: full-bleed background photo with eyebrow, H1 headline, CTA link and caption overlaid.",
+  "reuseGuidance": "Use for any campaign/landing hero with a background image and overlaid text. Use base hero for simple headline-only heroes.",
+  "sourceUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+  "sourceSelectors": [
+    "#top > section.hero-section"
+  ],
+  "blockStructure": {
+    "source": "get_block_details /block-collection/hero (xwalk library)",
+    "rows": [
+      [
+        "image (reference + imageAlt)"
+      ],
+      [
+        "text (richtext: heading, subheading, CTA)"
+      ]
+    ],
+    "notes": "Max 3 rows including name row."
+  }
+}

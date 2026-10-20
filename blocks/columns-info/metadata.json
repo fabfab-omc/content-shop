@@ -1,0 +1,47 @@
+{
+  "variantName": "columns-info",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Two-column intro: chapter label + heading on the left, lead paragraph and key/value metadata on the right",
+    "notes": [
+      "Side-by-side layout: heading column beside lead paragraph and metadata. Section background equals page background, so no style."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row, two cells: cell 1 = label paragraph + H2; cell 2 = lead paragraph + metadata paragraphs",
+    "cells": [
+      {
+        "col1": [
+          "p: 01 / GENERAL INFO",
+          "h2: ID. Tiguan."
+        ],
+        "col2": [
+          "p: lead text",
+          "p: Product: ID. Tiguan",
+          "p: Campaign status: Draft"
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-info"
+  ],
+  "usage": "Two-column intro: chapter label + heading on the left, lead paragraph and key/value metadata on the right.",
+  "reuseGuidance": "Reuse for any two-column label/heading + body text intro with equal column widths.",
+  "sourceUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+  "sourceSelectors": [
+    "#general"
+  ],
+  "blockStructure": {
+    "source": "get_block_details /block-collection/columns (xwalk library)",
+    "rows": [
+      [
+        "column 1 content",
+        "column 2 content"
+      ]
+    ],
+    "notes": "One row, two cells, each holding text/images/buttons/titles; no nested blocks."
+  }
+}

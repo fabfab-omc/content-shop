@@ -1,0 +1,43 @@
+.hero-campaign-container .hero-campaign-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-campaign {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 500px;
+  padding: 40px 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hero-campaign .hero-campaign-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-campaign .hero-campaign-media picture,
+.hero-campaign .hero-campaign-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-campaign .hero-campaign-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (width >= 900px) {
+  .hero-campaign {
+    min-height: 80vh;
+    padding: 64px 32px;
+  }
+}

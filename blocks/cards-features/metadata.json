@@ -1,0 +1,47 @@
+{
+  "variantName": "cards-features",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Grid of feature tiles (metric/number paragraph, H3 title, description); image cell may be left empty",
+    "notes": [
+      "Repeating structure of six feature tiles. No images: image cell left empty. Metric values (585 km, Over 2,000 kg) and numbers (03-06) are paragraphs, not headings; H3 is the feature title."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row per tile (6 on source); cell 1 = image (optional, may be empty), cell 2 = metric/number paragraph, H3 title, description",
+    "cells": [
+      {
+        "rows": 6,
+        "row": {
+          "image": "(empty)",
+          "text": [
+            "p: metric or number",
+            "h3: title",
+            "p: description"
+          ]
+        }
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-features"
+  ],
+  "usage": "Grid of feature tiles (metric/number paragraph, H3 title, description); image cell may be left empty.",
+  "reuseGuidance": "Reuse for text-led feature/highlight tiles; add images in the image cell when available.",
+  "sourceUrl": "http://localhost:8765/campaigns/id-tiguan.html",
+  "sourceSelectors": [
+    "#highlights"
+  ],
+  "blockStructure": {
+    "source": "get_block_details /block-collection/cards (xwalk library)",
+    "rows": [
+      [
+        "image (reference + imageAlt), may be empty",
+        "text (richtext)"
+      ]
+    ],
+    "notes": "One row per card; empty image cell must still be included."
+  }
+}

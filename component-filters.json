@@ -15,13 +15,49 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "hero-campaign",
+      "columns-info",
+      "columns-chapter",
+      "columns-media-split",
+      "cards-features",
+      "cards-gallery"
+    ]
+  },
+  {
+    "id": "cards-features",
+    "components": [
+      "cards-features-card"
+    ]
+  },
+  {
+    "id": "cards-gallery",
+    "components": [
+      "cards-gallery-card"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "columns-chapter",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "columns-info",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "columns-media-split",
+    "components": [
+      "column"
     ]
   },
   {
