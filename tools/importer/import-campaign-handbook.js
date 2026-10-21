@@ -4,6 +4,7 @@
 import heroCampaignParser from './parsers/hero-campaign.js';
 import columnsInfoParser from './parsers/columns-info.js';
 import cardsFeaturesParser from './parsers/cards-features.js';
+import cardsLinksParser from './parsers/cards-links.js';
 import cleanupTransformer from './transformers/content-shop-cleanup.js';
 import sectionsTransformer from './transformers/content-shop-sections.js';
 
@@ -13,7 +14,7 @@ const PAGE_TEMPLATE = {
     "http://localhost:8765/campaigns/id-cross.html"
   ],
   "representativeUrl": "http://localhost:8765/campaigns/id-cross.html",
-  "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
+  "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA, campaign assets from Content Hub). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
   "blocks": [
     {
       "name": "hero-campaign",
@@ -32,6 +33,12 @@ const PAGE_TEMPLATE = {
       "instances": [
         "section.inside .features",
         "section.phases .features"
+      ]
+    },
+    {
+      "name": "cards-links",
+      "instances": [
+        "section.assets .link-cards"
       ]
     }
   ],
@@ -101,6 +108,20 @@ const PAGE_TEMPLATE = {
       "defaultContent": [
         "section.closing"
       ]
+    },
+    {
+      "id": "c6",
+      "name": "View campaign assets",
+      "selector": [
+        "section.assets"
+      ],
+      "style": "white",
+      "blocks": [
+        "cards-links"
+      ],
+      "defaultContent": [
+        "section.assets .section-heading"
+      ]
     }
   ]
 };
@@ -109,6 +130,7 @@ const parsers = {
   'hero-campaign': heroCampaignParser,
   'columns-info': columnsInfoParser,
   'cards-features': cardsFeaturesParser,
+  'cards-links': cardsLinksParser,
 };
 
 const transformers = [cleanupTransformer, sectionsTransformer];

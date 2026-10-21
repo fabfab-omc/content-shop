@@ -273,7 +273,7 @@
         "http://localhost:8765/campaigns/id-cross.html"
       ],
       "representativeUrl": "http://localhost:8765/campaigns/id-cross.html",
-      "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
+      "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA, campaign assets from Content Hub). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
       "blocks": [
         {
           "name": "hero-campaign",
@@ -292,6 +292,12 @@
           "instances": [
             "section.inside .features",
             "section.phases .features"
+          ]
+        },
+        {
+          "name": "cards-links",
+          "instances": [
+            "section.assets .link-cards"
           ]
         }
       ],
@@ -360,6 +366,20 @@
           "blocks": [],
           "defaultContent": [
             "section.closing"
+          ]
+        },
+        {
+          "id": "c6",
+          "name": "View campaign assets",
+          "selector": [
+            "section.assets"
+          ],
+          "style": "white",
+          "blocks": [
+            "cards-links"
+          ],
+          "defaultContent": [
+            "section.assets .section-heading"
           ]
         }
       ]

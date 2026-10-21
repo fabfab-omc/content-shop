@@ -32,6 +32,28 @@ function decorateArrow(link) {
 }
 
 /**
+ * Opens links to other sites (e.g. AEM Assets Content Hub collections) in a new tab.
+ * @param {HTMLAnchorElement} link The CTA link
+ * @param {HTMLSpanElement} arrow The decorative arrow span
+ */
+function decorateExternal(link, arrow) {
+  let url;
+  try {
+    url = new URL(link.href, window.location.href);
+  } catch (e) {
+    return;
+  }
+  if (!/^https?:$/.test(url.protocol) || url.origin === window.location.origin) return;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  if (arrow.textContent === '→') arrow.textContent = '↗';
+  const hint = document.createElement('span');
+  hint.className = 'cards-links-card-hint';
+  hint.textContent = ' (opens in a new tab)';
+  link.querySelector('.cards-links-card-label')?.append(hint);
+}
+
+/**
  * cards-links: onward/support link tiles, one per authored row (icon cell + text cell).
  * The column count follows the number of tiles.
  * @param {Element} block The block element
@@ -55,7 +77,8 @@ export default function decorate(block) {
         });
         if (cta) {
           cta.classList.add('cards-links-card-cta');
-          decorateArrow(cta.querySelector('a[href]'));
+          const link = cta.querySelector('a[href]');
+          decorateExternal(link, decorateArrow(link));
           li.classList.add('cards-links-card-linked');
         }
       }

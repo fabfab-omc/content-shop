@@ -242,6 +242,11 @@ main > .section {
   padding: var(--section-padding-block) var(--section-padding-inline);
 }
 
+/* a section left empty once its metadata block becomes page properties */
+main > .section:empty {
+  display: none;
+}
+
 main > .section > div {
   max-width: none;
   margin: 0;

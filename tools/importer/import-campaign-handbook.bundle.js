@@ -157,6 +157,51 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/cards-links.js
+  function parse4(element, { document }) {
+    const clean = (t) => (t || "").replace(/\s+/g, " ").trim();
+    const items = Array.from(element.querySelectorAll(":scope > article.link-card"));
+    const cells = [];
+    items.forEach((item) => {
+      const icon = item.querySelector("img");
+      const heading = item.querySelector("h3, h2, h4");
+      const desc = item.querySelector(":scope > p");
+      const link = item.querySelector(":scope > a");
+      const imageFrag = document.createDocumentFragment();
+      if (icon) {
+        imageFrag.appendChild(document.createComment(" field:image "));
+        imageFrag.appendChild(icon);
+      }
+      const textFrag = document.createDocumentFragment();
+      const nodes = [];
+      if (heading) {
+        const h3 = document.createElement("h3");
+        h3.textContent = clean(heading.textContent);
+        nodes.push(h3);
+      }
+      if (desc) {
+        const p = document.createElement("p");
+        p.textContent = clean(desc.textContent);
+        nodes.push(p);
+      }
+      if (link) {
+        const p = document.createElement("p");
+        const a = document.createElement("a");
+        a.setAttribute("href", link.getAttribute("href") || "");
+        a.textContent = clean(link.textContent);
+        p.appendChild(a);
+        nodes.push(p);
+      }
+      if (nodes.length) {
+        textFrag.appendChild(document.createComment(" field:text "));
+        nodes.forEach((n) => textFrag.appendChild(n));
+      }
+      cells.push([imageFrag, textFrag]);
+    });
+    const block = WebImporter.Blocks.createBlock(document, { name: "cards-links", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/content-shop-cleanup.js
   function transform(hookName, element, payload) {
     if (hookName === "beforeTransform") {
@@ -245,7 +290,7 @@ var CustomImportScript = (() => {
       "http://localhost:8765/campaigns/id-cross.html"
     ],
     "representativeUrl": "http://localhost:8765/campaigns/id-cross.html",
-    "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
+    "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA, campaign assets from Content Hub). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
     "blocks": [
       {
         "name": "hero-campaign",
@@ -264,6 +309,12 @@ var CustomImportScript = (() => {
         "instances": [
           "section.inside .features",
           "section.phases .features"
+        ]
+      },
+      {
+        "name": "cards-links",
+        "instances": [
+          "section.assets .link-cards"
         ]
       }
     ],
@@ -333,13 +384,28 @@ var CustomImportScript = (() => {
         "defaultContent": [
           "section.closing"
         ]
+      },
+      {
+        "id": "c6",
+        "name": "View campaign assets",
+        "selector": [
+          "section.assets"
+        ],
+        "style": "white",
+        "blocks": [
+          "cards-links"
+        ],
+        "defaultContent": [
+          "section.assets .section-heading"
+        ]
       }
     ]
   };
   var parsers = {
     "hero-campaign": parse,
     "columns-info": parse2,
-    "cards-features": parse3
+    "cards-features": parse3,
+    "cards-links": parse4
   };
   var transformers = [transform, transform2];
   function executeTransformers(hookName, element, payload) {

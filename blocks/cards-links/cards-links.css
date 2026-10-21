@@ -99,6 +99,16 @@
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
+/* "(opens in a new tab)" for screen readers on external links */
+.cards-links .cards-links-card-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* whole tile clickable: stretch the single CTA link over the tile */
 .cards-links .cards-links-card-linked .cards-links-card-cta a::after {
   content: '';
