@@ -205,15 +205,16 @@
   padding: 64px var(--section-padding-inline);
 }
 
-.hero-campaign.no-image h1 {
+.hero-campaign.no-image h1,
+.hero-campaign.long-title h1 {
   max-width: 16ch;
   font-size: clamp(44px, 12vw, 56px);
   line-height: 1;
   text-wrap: balance;
 }
 
-.hero-campaign.no-image .hero-campaign-subtitle {
-  max-width: 31em;
+.hero-campaign .hero-campaign-content .hero-campaign-subtitle {
+  max-width: min(31em, 90%);
   margin: 24px 0 0;
   font-family: var(--heading-font-family);
   font-size: 20px;
@@ -223,15 +224,15 @@
   text-wrap: pretty;
 }
 
-.hero-campaign.no-image .hero-campaign-body {
-  max-width: 600px;
+.hero-campaign .hero-campaign-content .hero-campaign-body {
+  max-width: min(600px, 90%);
   margin: 16px 0 0;
   color: var(--brand-on-dark-muted);
   font-size: 14px;
   line-height: 1.6;
 }
 
-.hero-campaign.no-image .hero-campaign-meta {
+.hero-campaign .hero-campaign-meta {
   margin: 20px 0 0;
   color: var(--brand-on-dark-muted);
   font-size: 9px;
@@ -254,19 +255,20 @@
     padding-block: 80px;
   }
 
-  .hero-campaign.no-image h1 {
+  .hero-campaign.no-image h1,
+  .hero-campaign.long-title h1 {
     font-size: clamp(56px, 8.5vw, 72px);
   }
 
-  .hero-campaign.no-image .hero-campaign-subtitle {
+  .hero-campaign .hero-campaign-content .hero-campaign-subtitle {
     font-size: 24px;
   }
 
-  .hero-campaign.no-image .hero-campaign-body {
+  .hero-campaign .hero-campaign-content .hero-campaign-body {
     font-size: 15px;
   }
 
-  .hero-campaign.no-image .hero-campaign-meta {
+  .hero-campaign .hero-campaign-meta {
     font-size: 10px;
   }
 
@@ -284,17 +286,23 @@
     padding-block: 110px;
   }
 
-  .hero-campaign.no-image h1 {
+  .hero-campaign.no-image h1,
+  .hero-campaign.long-title h1 {
     font-size: clamp(64px, 6.5vw, 100px);
   }
 
-  .hero-campaign.no-image .hero-campaign-subtitle {
+  .hero-campaign .hero-campaign-content .hero-campaign-subtitle {
     margin-top: 32px;
     font-size: 26px;
   }
 
-  .hero-campaign.no-image .hero-campaign-body {
+  .hero-campaign .hero-campaign-content .hero-campaign-body {
+    margin-top: 20px;
     font-size: 16px;
+  }
+
+  .hero-campaign .hero-campaign-meta {
+    margin-top: 24px;
   }
 }
 
@@ -303,7 +311,13 @@
     padding-block: 130px;
   }
 
-  .hero-campaign.no-image .hero-campaign-subtitle {
+  .hero-campaign .hero-campaign-content .hero-campaign-subtitle {
     font-size: 28px;
   }
+}
+
+/* over a photo, use the lighter on-image grey (as the eyebrow) for legibility */
+.hero-campaign:not(.no-image) .hero-campaign-content .hero-campaign-body,
+.hero-campaign:not(.no-image) .hero-campaign-content .hero-campaign-meta {
+  color: #e6eceb;
 }

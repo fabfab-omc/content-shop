@@ -62,6 +62,8 @@ export default function decorate(block) {
     if (prev && prev.tagName === 'P') prev.classList.add('hero-campaign-eyebrow');
     // accent-coloured trailing full stop, as on the source title
     wrapTrailing(heading, /\.$/, 'hero-campaign-period');
+    // long titles (e.g. "Welcome to the Content Shop") use the smaller title scale
+    if (heading.textContent.trim().length > 18) block.classList.add('long-title');
   }
 
   // every paragraph holding nothing but a link is a CTA
