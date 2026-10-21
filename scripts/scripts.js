@@ -145,12 +145,29 @@ async function loadEager(doc) {
 }
 
 /**
+ * Appends the shared "explore more" fragment to every campaign page (/campaigns/*),
+ * so each campaign page ends with a route onward without authors adding it.
+ * @param {Element} main The main element
+ */
+async function loadCampaignExplore(main) {
+  const { pathname } = window.location;
+  // the local preview serves pages under /content, the live site at the root
+  const root = pathname.startsWith('/content/') ? '/content' : '';
+  if (!pathname.startsWith(`${root}/campaigns/`)) return;
+  // eslint-disable-next-line import/no-cycle
+  const { loadFragment } = await import('../blocks/fragment/fragment.js');
+  const fragment = await loadFragment(`${root}/fragments/campaign-explore`);
+  if (fragment) main.append(...fragment.children);
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
+  await loadCampaignExplore(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;

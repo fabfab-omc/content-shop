@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Campaigns",
+      "id": "cards-campaigns",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Campaigns",
+              "filter": "cards-campaigns"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Cards Campaigns Card",
+      "id": "cards-campaigns-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Cards Campaigns Card",
+              "model": "cards-campaigns-card"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-campaigns-card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-campaigns",
+      "components": [
+        "cards-campaigns-card"
+      ]
+    }
+  ]
+}

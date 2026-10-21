@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "http://localhost:8765/campaigns/id-cross.html",
+  "path": "campaigns/id-cross",
+  "timestamp": "2026-10-21T09:39:40.683Z",
+  "title": "ID. Cross — Campaign Handbook | Content Shop",
+  "template": "campaign-handbook",
+  "blocks": [
+    "hero-campaign",
+    "columns-info",
+    "cards-features",
+    "cards-features"
+  ]
+}

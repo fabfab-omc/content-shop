@@ -1,0 +1,33 @@
+{
+  "variantName": "cards-links",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Onward/support link tiles: optional icon, bold title, short muted description, CTA with circled arrow",
+    "notes": [
+      "Column count follows the tile count (2 -> 2 columns, 3 -> 3, 4 -> 4 on desktop; 1 column on mobile).",
+      "Tiles separated by thin #cfd5d3 rules like cards-features.",
+      "Optional ~40px icon above the title; whole tile clickable via the single CTA link."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row per tile; cell 1 = icon image (may be empty), cell 2 = richtext (h3 title + p description + p>a CTA)",
+    "cells": [
+      {
+        "rows": 3,
+        "row": {
+          "image": "picture > img (optional icon)",
+          "text": ["h3: Help & FAQs", "p: description", "p > a: Go to Help & FAQs →"]
+        }
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": ["cards-links"],
+  "usage": "Home page 'Need support?' tiles and the shared 'Explore more in the Content Shop' section on campaign pages.",
+  "reuseGuidance": "Reuse for 1-4 short onward-navigation tiles, each with one link; works on paper and white sections.",
+  "blockStructure": {
+    "rows": [["image (reference + imageAlt), may be empty", "text (richtext)"]],
+    "notes": "One row per tile; empty icon cell must still be included. A trailing arrow in the link text is optional (one is added)."
+  }
+}

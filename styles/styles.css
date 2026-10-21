@@ -150,7 +150,7 @@ a:focus-visible {
 }
 
 /* buttons: the source has no button styling, links render as plain text */
-main .button-container {
+main .button-wrapper {
   display: inline;
 }
 
@@ -196,6 +196,18 @@ main .default-content-wrapper > p:has(+ h1, + h2) {
   text-transform: uppercase;
 }
 
+/* section intro: a paragraph directly below a section heading */
+main .default-content-wrapper > h2 + p {
+  max-width: 720px;
+  margin-top: 20px;
+  color: var(--brand-muted);
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+
 /* small print: default content that follows a block in the same section */
 main .section > [class$='-wrapper']:not(.default-content-wrapper) + .default-content-wrapper > p {
   max-width: 650px;
@@ -203,6 +215,25 @@ main .section > [class$='-wrapper']:not(.default-content-wrapper) + .default-con
   color: var(--brand-note);
   font-size: 9px;
   line-height: 1.8;
+}
+
+main .section > [class$='-wrapper']:not(.default-content-wrapper) + .default-content-wrapper > h3 {
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+/* onward link below a block, e.g. "View archived campaigns →" */
+main .section > [class$='-wrapper']:not(.default-content-wrapper) + .default-content-wrapper > p:has(> a:only-child) {
+  display: block;
+  margin-top: 40px;
+  color: var(--text-color);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+main .section > [class$='-wrapper']:not(.default-content-wrapper) + .default-content-wrapper > p > a:only-child:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 /* sections */
@@ -227,8 +258,8 @@ main > .section.cards-gallery-container {
   padding: 0 4% 54px;
 }
 
-/* section heading: eyebrow + heading ahead of a block */
-main > .section > .default-content-wrapper:has(> p:first-child + h2:last-child) {
+/* section heading ahead of a block: heading (+ intro), or eyebrow + heading */
+main > .section > .default-content-wrapper:has(+ [class$='-wrapper']) {
   margin-bottom: 35px;
 }
 
@@ -241,12 +272,19 @@ main > .section > .default-content-wrapper:has(> p:first-child + h2:last-child) 
     scroll-padding-top: 86px;
   }
 
+  main .default-content-wrapper > h2 + p {
+    font-size: clamp(18px, 1.7vw, 24px);
+  }
+
+  main > .section > .default-content-wrapper:has(+ [class$='-wrapper']) {
+    margin-bottom: 60px;
+  }
+
   main > .section > .default-content-wrapper:has(> p:first-child + h2:last-child) {
     display: flex;
     align-items: start;
     justify-content: space-between;
     gap: 30px;
-    margin-bottom: 60px;
   }
 
   main > .section > .default-content-wrapper:has(> p:first-child + h2:last-child) > p {
@@ -278,12 +316,13 @@ main .section.centered {
   text-align: center;
 }
 
-/* closing statement: dark, centered default content */
+/* closing: dark, centered default content */
 main .section.dark.centered {
   padding-block: 65px;
 }
 
-main .section.dark.centered .default-content-wrapper > p:first-child {
+/* closing statement: eyebrow + statement paragraph + small link (campaign overview) */
+main .section.dark.centered .default-content-wrapper:not(:has(> h2)) > p:first-child {
   color: var(--brand-on-dark-muted);
   font-size: var(--eyebrow-font-size);
   line-height: 1.6;
@@ -291,7 +330,7 @@ main .section.dark.centered .default-content-wrapper > p:first-child {
   text-transform: uppercase;
 }
 
-main .section.dark.centered .default-content-wrapper > p:nth-child(2) {
+main .section.dark.centered .default-content-wrapper:not(:has(> h2)) > p:nth-child(2) {
   margin: 30px 0;
   font-family: var(--heading-font-family);
   font-size: 45px;
@@ -300,6 +339,7 @@ main .section.dark.centered .default-content-wrapper > p:nth-child(2) {
   letter-spacing: -1.7px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity -- closing links are a separate context */
 main .section.dark.centered .default-content-wrapper a:any-link {
   display: inline-block;
   padding: 10px;
@@ -307,13 +347,50 @@ main .section.dark.centered .default-content-wrapper a:any-link {
   font-size: 10px;
 }
 
+/* closing call to action: heading + intro + primary link (campaign handbook) */
+/* stylelint-disable-next-line no-descending-specificity -- closing headings are a separate context */
+main .section.dark.centered .default-content-wrapper > h2 {
+  font-size: 39px;
+  line-height: 1.1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- closing intro is a separate context */
+main .section.dark.centered .default-content-wrapper > h2 + p {
+  margin: 24px auto 0;
+  color: var(--brand-on-dark-muted);
+}
+
+main .section.dark.centered .default-content-wrapper:has(> h2) > p:has(> a:only-child) {
+  display: block;
+  margin-top: 40px;
+}
+
+main .section.dark.centered .default-content-wrapper:has(> h2) > p > a:only-child:any-link {
+  padding: 16px 28px;
+  border: 1px solid rgb(255 255 255 / 40%);
+  color: var(--brand-on-dark);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+main .section.dark.centered .default-content-wrapper:has(> h2) > p > a:only-child:hover {
+  background-color: var(--brand-on-dark);
+  color: var(--brand-navy);
+}
+
 @media (width >= 600px) {
   main .section.dark.centered {
     padding-block: 90px;
   }
 
-  main .section.dark.centered .default-content-wrapper > p:nth-child(2) {
+  main .section.dark.centered .default-content-wrapper:not(:has(> h2)) > p:nth-child(2) {
     font-size: clamp(40px, 6.7vw, 100px);
     letter-spacing: -3px;
+  }
+
+  main .section.dark.centered .default-content-wrapper > h2 {
+    font-size: clamp(40px, 5vw, 76px);
   }
 }

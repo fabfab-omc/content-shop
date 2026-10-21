@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "http://localhost:8765/fragments/campaign-explore.html",
+  "path": "fragments/campaign-explore",
+  "timestamp": "2026-10-21T09:16:26.988Z",
+  "title": "Explore more in the Content Shop",
+  "template": "fragment-campaign-explore",
+  "blocks": [
+    "cards-links"
+  ]
+}

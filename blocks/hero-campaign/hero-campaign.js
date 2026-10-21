@@ -64,17 +64,48 @@ export default function decorate(block) {
     wrapTrailing(heading, /\.$/, 'hero-campaign-period');
   }
 
-  const cta = [...content.querySelectorAll('p')].find((p) => {
+  // every paragraph holding nothing but a link is a CTA
+  const ctas = [...content.querySelectorAll('p')].filter((p) => {
     const link = p.querySelector('a');
     return link && link.textContent.trim() === p.textContent.trim();
   });
-  if (cta) {
+  ctas.forEach((cta) => {
     cta.classList.add('hero-campaign-cta');
     const arrow = wrapTrailing(cta.querySelector('a'), /\s*[↓↑→←]$/, 'hero-campaign-arrow');
     if (arrow) arrow.setAttribute('aria-hidden', 'true');
-    const caption = cta.nextElementSibling;
+  });
+
+  // copy between the heading and the first CTA: subtitle, then body / meta lines
+  if (heading) {
+    let el = heading.nextElementSibling;
+    let first = true;
+    while (el && el.tagName === 'P' && !el.classList.contains('hero-campaign-cta')) {
+      if (first) el.classList.add('hero-campaign-subtitle');
+      else if (el.textContent.includes('·')) el.classList.add('hero-campaign-meta');
+      else el.classList.add('hero-campaign-body');
+      first = false;
+      el = el.nextElementSibling;
+    }
+  }
+
+  const lastCta = ctas[ctas.length - 1];
+  if (lastCta) {
+    const caption = lastCta.nextElementSibling;
     if (caption && caption.tagName === 'P' && !caption.querySelector('a')) {
       caption.classList.add('hero-campaign-caption');
     }
   }
+
+  // group consecutive CTAs into one row
+  ctas.forEach((cta) => {
+    const prev = cta.previousElementSibling;
+    if (prev && prev.classList.contains('hero-campaign-ctas')) {
+      prev.append(cta);
+    } else {
+      const row = document.createElement('div');
+      row.className = 'hero-campaign-ctas';
+      cta.before(row);
+      row.append(cta);
+    }
+  });
 }

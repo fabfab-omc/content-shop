@@ -139,6 +139,264 @@
           ]
         }
       ]
+    },
+    {
+      "name": "home",
+      "urls": [
+        "http://localhost:8765/index.html"
+      ],
+      "representativeUrl": "http://localhost:8765/index.html",
+      "description": "Content Shop landing page (hero, service tiles, how it works, campaign cards, support, Insider tabs). Source built from Content_Shop_Landing_Page_Wireframe_Brief.docx",
+      "blocks": [
+        {
+          "name": "hero-campaign",
+          "instances": [
+            "section.hero-section"
+          ]
+        },
+        {
+          "name": "cards-features",
+          "instances": [
+            "section.services .features",
+            "section.how .features"
+          ]
+        },
+        {
+          "name": "cards-campaigns",
+          "instances": [
+            "section.campaigns .campaign-cards"
+          ]
+        },
+        {
+          "name": "cards-links",
+          "instances": [
+            "section.support .link-cards"
+          ]
+        },
+        {
+          "name": "tabs",
+          "instances": [
+            "section.insider .tabs"
+          ]
+        }
+      ],
+      "urlPattern": "/",
+      "sections": [
+        {
+          "id": "h1",
+          "name": "Hero",
+          "selector": [
+            "section.hero-section"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-campaign"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "h2",
+          "name": "What you can do",
+          "selector": [
+            "section.services"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-features"
+          ],
+          "defaultContent": [
+            "section.services .section-heading"
+          ]
+        },
+        {
+          "id": "h3",
+          "name": "How it works",
+          "selector": [
+            "section.how"
+          ],
+          "style": "white",
+          "blocks": [
+            "cards-features"
+          ],
+          "defaultContent": [
+            "section.how .section-heading"
+          ]
+        },
+        {
+          "id": "h4",
+          "name": "Campaigns",
+          "selector": [
+            "section.campaigns"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-campaigns"
+          ],
+          "defaultContent": [
+            "section.campaigns .section-heading",
+            "section.campaigns .section-links"
+          ]
+        },
+        {
+          "id": "h5",
+          "name": "Need support?",
+          "selector": [
+            "section.support"
+          ],
+          "style": "white",
+          "blocks": [
+            "cards-links"
+          ],
+          "defaultContent": [
+            "section.support .section-heading"
+          ]
+        },
+        {
+          "id": "h6",
+          "name": "Content Shop Insider",
+          "selector": [
+            "section.insider"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs"
+          ],
+          "defaultContent": [
+            "section.insider .section-heading"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "campaign-handbook",
+      "urls": [
+        "http://localhost:8765/campaigns/id-cross.html"
+      ],
+      "representativeUrl": "http://localhost:8765/campaigns/id-cross.html",
+      "description": "Reusable campaign handbook page (hero, at a glance, what is inside, phases covered, closing CTA). Source built from ID_Cross_Handbook_Landing_Page_Wireframe_Brief.docx",
+      "blocks": [
+        {
+          "name": "hero-campaign",
+          "instances": [
+            "section.hero-section"
+          ]
+        },
+        {
+          "name": "columns-info",
+          "instances": [
+            "section.general"
+          ]
+        },
+        {
+          "name": "cards-features",
+          "instances": [
+            "section.inside .features",
+            "section.phases .features"
+          ]
+        }
+      ],
+      "urlPattern": "/campaigns/*",
+      "sections": [
+        {
+          "id": "c1",
+          "name": "Hero",
+          "selector": [
+            "section.hero-section"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-campaign"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "c2",
+          "name": "The campaign at a glance",
+          "selector": [
+            "section.general"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-info"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "c3",
+          "name": "What's inside the handbook?",
+          "selector": [
+            "section.inside"
+          ],
+          "style": "white",
+          "blocks": [
+            "cards-features"
+          ],
+          "defaultContent": [
+            "section.inside .section-heading"
+          ]
+        },
+        {
+          "id": "c4",
+          "name": "Campaign phases covered",
+          "selector": [
+            "section.phases"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-features"
+          ],
+          "defaultContent": [
+            "section.phases .section-heading",
+            "section.phases .note"
+          ]
+        },
+        {
+          "id": "c5",
+          "name": "Closing call to action",
+          "selector": [
+            "section.closing"
+          ],
+          "style": "dark, centered",
+          "blocks": [],
+          "defaultContent": [
+            "section.closing"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fragment-campaign-explore",
+      "urls": [
+        "http://localhost:8765/fragments/campaign-explore.html"
+      ],
+      "representativeUrl": "http://localhost:8765/fragments/campaign-explore.html",
+      "description": "Shared \"Explore more in the Content Shop\" section appended to every page under /campaigns/",
+      "blocks": [
+        {
+          "name": "cards-links",
+          "instances": [
+            "section.explore .link-cards"
+          ]
+        }
+      ],
+      "urlPattern": "/fragments/campaign-explore",
+      "sections": [
+        {
+          "id": "f1",
+          "name": "Explore more",
+          "selector": [
+            "section.explore"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-links"
+          ],
+          "defaultContent": [
+            "section.explore .section-heading",
+            "section.explore .section-links"
+          ]
+        }
+      ]
     }
   ],
   "metadata": {

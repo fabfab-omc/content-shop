@@ -1,0 +1,143 @@
+/* tab list */
+.tabs .tabs-list {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  margin: 0 -4px;
+  padding: 2px 4px 0;
+  border-bottom: 1px solid var(--brand-line);
+  scrollbar-width: none;
+}
+
+.tabs .tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs .tabs-tab {
+  position: relative;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 12px 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--brand-muted);
+  font-family: var(--body-font-family);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tabs .tabs-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--brand-ink);
+  transition: width 0.2s;
+}
+
+.tabs .tabs-tab:hover,
+.tabs .tabs-tab[aria-selected='true'] {
+  color: var(--brand-ink);
+}
+
+.tabs .tabs-tab:hover::after,
+.tabs .tabs-tab[aria-selected='true']::after {
+  width: 100%;
+}
+
+.tabs .tabs-tab:focus-visible {
+  outline: 2px solid var(--brand-focus);
+  outline-offset: 0;
+}
+
+/* panels */
+.tabs .tabs-panel {
+  max-width: 720px;
+  padding-top: 32px;
+  color: var(--brand-ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tabs .tabs-panel[hidden] {
+  display: none;
+}
+
+.tabs .tabs-panel:focus-visible {
+  outline: 2px solid var(--brand-focus);
+  outline-offset: 4px;
+}
+
+.tabs .tabs-panel-content > :first-child {
+  margin-top: 0;
+}
+
+.tabs .tabs-panel-content > :last-child {
+  margin-bottom: 0;
+}
+
+.tabs .tabs-panel-content p,
+.tabs .tabs-panel-content li {
+  color: var(--brand-muted);
+}
+
+.tabs .tabs-panel-content h2,
+.tabs .tabs-panel-content h3,
+.tabs .tabs-panel-content h4 {
+  color: var(--brand-ink);
+  font-family: var(--heading-font-family);
+}
+
+.tabs .tabs-panel-content ul,
+.tabs .tabs-panel-content ol {
+  padding-left: 1.2em;
+}
+
+.tabs .tabs-panel-content a {
+  color: var(--brand-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tabs .tabs-panel-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (width >= 600px) {
+  .tabs .tabs-list {
+    gap: 32px;
+  }
+
+  .tabs .tabs-tab {
+    font-size: 12px;
+  }
+
+  .tabs .tabs-panel {
+    padding-top: 40px;
+    font-size: 15px;
+  }
+}
+
+@media (width >= 900px) {
+  .tabs .tabs-list {
+    gap: 40px;
+  }
+
+  .tabs .tabs-tab {
+    padding: 14px 0;
+    font-size: 13px;
+  }
+
+  .tabs .tabs-panel {
+    padding-top: 48px;
+    font-size: 16px;
+  }
+}

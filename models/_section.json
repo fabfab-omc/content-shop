@@ -68,7 +68,10 @@
         "columns-chapter",
         "columns-media-split",
         "cards-features",
-        "cards-gallery"
+        "cards-gallery",
+        "cards-campaigns",
+        "cards-links",
+        "tabs"
       ]
     }
   ]

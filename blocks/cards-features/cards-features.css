@@ -73,6 +73,75 @@
   letter-spacing: 1px;
 }
 
+
+/* four cards without lead paragraphs: one column on mobile */
+.cards-features:has(> ul > li:nth-child(4):last-child) > ul {
+  grid-template-columns: 1fr;
+}
+
+.cards-features:has(> ul > li:nth-child(4):last-child) > ul > li,
+.cards-features:has(> ul > li:nth-child(4):last-child) > ul > li:nth-child(even) {
+  min-height: 0;
+  padding: 25px 0;
+  border-left: 0;
+}
+
+/* no lead paragraph: the title starts the card */
+.cards-features .cards-features-card-body > h3:first-child {
+  margin-top: 0;
+}
+
+/* phases variant: status badge ("Covered", "Preview") */
+.cards-features.phases .cards-features-card-body > p.cards-features-card-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  max-width: none;
+  height: 50px;
+  padding-bottom: 14px;
+  color: #8c9e72;
+  font-family: var(--body-font-family);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cards-features.phases .cards-features-card-status::before {
+  content: '';
+  flex: none;
+  box-sizing: border-box;
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: currentcolor;
+}
+
+/* phases variant: anything not covered (e.g. "Preview") is visually muted */
+.cards-features.phases > ul > li.is-muted {
+  border-bottom-style: dashed;
+}
+
+.cards-features.phases > ul > li.is-muted .cards-features-card-status {
+  color: var(--brand-note);
+}
+
+.cards-features.phases > ul > li.is-muted .cards-features-card-status::before {
+  background: transparent;
+}
+
+.cards-features.phases > ul > li.is-muted h3 {
+  color: var(--brand-muted);
+  opacity: 0.7;
+}
+
+.cards-features.phases > ul > li.is-muted .cards-features-card-body > p:not(.cards-features-card-status) {
+  opacity: 0.7;
+}
+
 /* tablet (600px - 899px): three columns, tighter padding */
 @media (width >= 600px) {
   .cards-features > ul {
@@ -113,6 +182,31 @@
     height: 60px;
     font-size: 13px;
   }
+
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul > li,
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul > li:nth-child(even) {
+    min-height: 0;
+    padding: 34px 20px 36px 0;
+    border-left: 0;
+  }
+
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul > li:nth-child(even) {
+    border-left: 1px solid #cfd5d3;
+    padding-left: 23px;
+  }
+
+  .cards-features.phases .cards-features-card-body > p.cards-features-card-status {
+    height: 60px;
+    font-size: 10px;
+  }
+
+  .cards-features.phases > ul > li.is-muted:not(:nth-child(3n+1)) {
+    border-left-style: dashed;
+  }
 }
 
 /* desktop (>= 900px) */
@@ -128,5 +222,19 @@
 
   .cards-features .cards-features-card-body > p.cards-features-card-metric {
     font-size: 36px;
+  }
+
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul > li,
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul > li:nth-child(even) {
+    padding-right: 27px;
+  }
+
+  .cards-features:has(> ul > li:nth-child(4):last-child) > ul > li:not(:first-child) {
+    border-left: 1px solid #cfd5d3;
+    padding-left: 32px;
   }
 }

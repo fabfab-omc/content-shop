@@ -43,52 +43,52 @@ var CustomImportScript = (() => {
 
   // tools/importer/parsers/hero-campaign.js
   function parse(element, { document }) {
+    const clean = (t) => (t || "").replace(/\s+/g, " ").trim();
     const toParagraph = (el) => {
       const p = document.createElement("p");
-      p.textContent = el.textContent.replace(/\s+/g, " ").trim();
+      p.textContent = clean(el.textContent);
+      return p;
+    };
+    const toHeading = (el) => {
+      const h1 = document.createElement("h1");
+      el.childNodes.forEach((n) => {
+        if (n.nodeType === 1 && n.tagName === "BR") {
+          h1.appendChild(document.createElement("br"));
+        } else if (n.textContent.trim()) {
+          h1.appendChild(document.createTextNode(clean(n.textContent)));
+        }
+      });
+      return h1;
+    };
+    const toLink = (el) => {
+      const p = document.createElement("p");
+      const a = document.createElement("a");
+      a.setAttribute("href", el.getAttribute("href") || "");
+      a.textContent = clean(el.textContent);
+      p.appendChild(a);
       return p;
     };
     const img = element.querySelector("img.hero-photo") || element.querySelector("img");
-    const eyebrow = element.querySelector(".hero-copy .eyebrow");
-    const heading = element.querySelector(".hero-copy h1, h1");
-    const cta = element.querySelector("a.hero-explore");
-    const caption = element.querySelector(".hero-caption");
-    const cells = [];
+    const copy = element.querySelector(".hero-copy") || element;
+    const caption = element.querySelector(":scope > .hero-caption");
     const imageFrag = document.createDocumentFragment();
     if (img) {
       imageFrag.appendChild(document.createComment(" field:image "));
       imageFrag.appendChild(img);
     }
-    cells.push([imageFrag]);
-    const textFrag = document.createDocumentFragment();
     const textNodes = [];
-    if (eyebrow) textNodes.push(toParagraph(eyebrow));
-    if (heading) {
-      const h1 = document.createElement("h1");
-      heading.childNodes.forEach((n) => {
-        if (n.nodeType === 1 && n.tagName === "BR") {
-          h1.appendChild(document.createElement("br"));
-        } else if (n.textContent.trim()) {
-          h1.appendChild(document.createTextNode(n.textContent.replace(/\s+/g, " ").trim()));
-        }
-      });
-      textNodes.push(h1);
-    }
-    if (cta) {
-      const p = document.createElement("p");
-      const a = document.createElement("a");
-      a.setAttribute("href", cta.getAttribute("href") || "");
-      const label = Array.from(cta.childNodes).filter((n) => n.nodeType === 3).map((n) => n.textContent).join(" ").replace(/\s+/g, " ").trim();
-      a.textContent = label || "Explore the campaign";
-      p.appendChild(a);
-      textNodes.push(p);
-    }
+    [...copy.children].forEach((child) => {
+      if (child.matches("h1, h2")) textNodes.push(toHeading(child));
+      else if (child.matches("a")) textNodes.push(toLink(child));
+      else if (child.matches("p, span, div") && clean(child.textContent)) textNodes.push(toParagraph(child));
+    });
     if (caption) textNodes.push(toParagraph(caption));
+    const textFrag = document.createDocumentFragment();
     if (textNodes.length) {
       textFrag.appendChild(document.createComment(" field:text "));
       textNodes.forEach((n) => textFrag.appendChild(n));
     }
-    cells.push([textFrag]);
+    const cells = [[imageFrag], [textFrag]];
     const block = WebImporter.Blocks.createBlock(document, { name: "hero-campaign", cells });
     element.replaceWith(block);
   }
@@ -231,7 +231,8 @@ var CustomImportScript = (() => {
       }
       cells.push(["", textFrag]);
     });
-    const block = WebImporter.Blocks.createBlock(document, { name: "cards-features", cells });
+    const name = element.classList.contains("phases") ? "cards-features (phases)" : "cards-features";
+    const block = WebImporter.Blocks.createBlock(document, { name, cells });
     element.replaceWith(block);
   }
 

@@ -3,9 +3,14 @@
 
 /**
  * Parser for cards-features variant. Base: cards.
- * Selector: section.highlights .features
+ * Selectors: section.highlights .features, section.services .features,
+ *            section.how .features, section.inside .features, section.phases .features
  * Model: container with cards-features-card items (image + imageAlt, text richtext).
- * Each article.feature -> row [empty image cell, text: metric/number + h3 + p].
+ *
+ * Cards convention: one row per card, 2 cells per row.
+ *   Cell 1: image or icon (no images in source, so the empty cell is kept)
+ *   Cell 2: richtext - optional lead (metric / number / phase status), title (h3), description
+ * A .features.phases list becomes the "phases" variant (lead = phase status, e.g. Covered / Preview).
  */
 export default function parse(element, { document }) {
   const clean = (t) => (t || '').replace(/\s+/g, ' ').trim();
@@ -32,10 +37,11 @@ export default function parse(element, { document }) {
       nodes.forEach((n) => textFrag.appendChild(n));
     }
 
-    // No images in source: keep the empty image cell (no field hint)
+    // Cell 1 (image) stays empty but present; cell 2 holds the text
     cells.push(['', textFrag]);
   });
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'cards-features', cells });
+  const name = element.classList.contains('phases') ? 'cards-features (phases)' : 'cards-features';
+  const block = WebImporter.Blocks.createBlock(document, { name, cells });
   element.replaceWith(block);
 }

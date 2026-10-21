@@ -1,0 +1,33 @@
+{
+  "variantName": "cards-campaigns",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Grid of campaign cards: key visual + campaign name + 'View campaign' link",
+    "notes": [
+      "1 column mobile, 2 tablet, 3 desktop; key visual in a fixed 4:3 frame (object-fit cover).",
+      "Empty image cell renders a brand-navy placeholder panel showing the campaign name.",
+      "Whole card is clickable via the single CTA link (stretched link)."
+    ]
+  },
+  "contentPattern": {
+    "structure": "one row per campaign; cell 1 = key visual image (may be empty), cell 2 = richtext (h3 campaign name + p>a 'View campaign →')",
+    "cells": [
+      {
+        "rows": 2,
+        "row": {
+          "image": "picture > img (optional)",
+          "text": ["h3: ID. Tiguan", "p > a: View campaign →"]
+        }
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": ["cards-campaigns"],
+  "usage": "Home page campaign overview listing current campaigns with a link to each campaign page.",
+  "reuseGuidance": "Reuse for any image-led list of linked items (campaigns, programmes) where each card has one onward link.",
+  "blockStructure": {
+    "rows": [["image (reference + imageAlt), may be empty", "text (richtext)"]],
+    "notes": "One row per card; empty image cell must still be included."
+  }
+}

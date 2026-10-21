@@ -1,0 +1,11 @@
+{
+  "variantName": "tabs",
+  "baseBlock": "tabs",
+  "canonicalModel": "tabs",
+  "visualCharacteristics": "Row of small text tab labels with a 1px ink underline on the active/hovered tab over a 1px line rule; one rich-text panel visible below (max-width 720px).",
+  "contentPattern": "One row per tab: cell 1 = tab label (plain text), cell 2 = tab content (richtext: headings, paragraphs, lists, links, images).",
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home page 'Content Shop Insider' section (Brand Book / Latest updates / Coming soon).",
+  "reuseGuidance": "Use for switching between a few peer content panels. Keep labels short; horizontally scrollable on small screens."
+}

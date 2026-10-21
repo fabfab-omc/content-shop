@@ -1,22 +1,30 @@
 const META_PATTERN = /^([^:]{1,40}):\s+(.+)$/s;
 
+const isMetaParagraph = (el) => el?.tagName === 'P' && !el.children.length
+  && META_PATTERN.test(el.textContent.trim());
+
 /**
  * Turns trailing "Label: Value" paragraphs of a column into a definition list.
+ * With a lead paragraph, the pairs render as a small metadata row; when the
+ * column holds nothing but pairs (at least two), they render as a "glance" grid.
  * @param {Element} col The column element
  */
 function decorateMetadata(col) {
   const items = [];
-  // collect the trailing run of plain "Label: Value" paragraphs (never the first child)
+  // collect the trailing run of plain "Label: Value" paragraphs
   let el = col.lastElementChild;
-  while (el && el !== col.firstElementChild && el.tagName === 'P'
-    && !el.children.length && META_PATTERN.test(el.textContent.trim())) {
+  while (isMetaParagraph(el)) {
     items.unshift(el);
     el = el.previousElementSibling;
   }
+  // a single pair alone in the column stays a lead paragraph
+  const isGlance = !el && items.length > 1;
+  if (!el && !isGlance) items.shift();
   if (!items.length) return;
 
   const dl = document.createElement('dl');
   dl.className = 'columns-info-metadata';
+  if (isGlance) dl.classList.add('columns-info-metadata-glance');
   items.forEach((p) => {
     const [, label, value] = p.textContent.trim().match(META_PATTERN);
     const item = document.createElement('div');
