@@ -1,7 +1,8 @@
 import { loadCSS, readBlockConfig } from '../../scripts/aem.js';
 import decorateCards from '../cards-campaigns/cards-campaigns.js';
 
-const CAMPAIGN_PATH = /^\/campaigns\/[^/]+\/?$/;
+// campaign pages are folder index pages: /campaigns/{name}/
+const CAMPAIGN_PATH = /^\/campaigns\/[^/]+\/$/;
 
 /**
  * Fetches the published campaign pages from the query index, most recently updated first.

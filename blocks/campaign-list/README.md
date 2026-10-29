@@ -1,6 +1,6 @@
 # campaign-list
 
-Lists the published campaign pages (`/campaigns/{name}/`) automatically, most recently updated first, as campaign cards (same design as **cards-campaigns**).
+Lists the published campaign pages (folder index pages, `/campaigns/{name}/`) automatically, most recently updated first, as campaign cards (same design as **cards-campaigns**).
 
 ## Authoring (Document Authoring)
 
