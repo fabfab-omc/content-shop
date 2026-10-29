@@ -1,3 +1,4 @@
+import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
@@ -5,7 +6,7 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} p The paragraph
  */
 function decorateDividers(p) {
-  if (!p.textContent.includes(' / ')) return;
+  if (!p.textContent.includes(' / ') || p.querySelector('a')) return;
   const parts = p.textContent.split(' / ');
   p.textContent = '';
   parts.forEach((part, i) => {
@@ -20,19 +21,24 @@ function decorateDividers(p) {
 }
 
 /**
- * loads and decorates the footer
+ * loads and decorates the footer: the authored footer document
+ * (e.g. copyright line, contact email), one group per section
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // local preview serves the fragment under /content, DA/EDS at the root
-  const fragment = await loadFragment('/content/footer') || await loadFragment('/footer');
+  const footerMeta = getMetadata('footer');
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const fragment = await loadFragment(footerPath);
   block.textContent = '';
   if (!fragment) return;
 
   const footer = document.createElement('div');
-  fragment.querySelectorAll('p').forEach((p) => {
-    decorateDividers(p);
-    footer.append(p);
+  fragment.querySelectorAll(':scope > .section').forEach((section) => {
+    const group = document.createElement('div');
+    group.className = 'footer-group';
+    section.querySelectorAll('.default-content-wrapper > *').forEach((el) => group.append(el));
+    group.querySelectorAll('p').forEach(decorateDividers);
+    if (group.children.length) footer.append(group);
   });
 
   block.append(footer);
