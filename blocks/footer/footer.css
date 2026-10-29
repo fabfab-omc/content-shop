@@ -1,49 +1,59 @@
-footer .footer > div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 25px 7%;
-  color: #82918f;
-  font-size: 8px;
+footer .footer {
+  border-top: 1px solid var(--brand-line);
+  color: var(--brand-muted);
+  font-size: 12px;
   line-height: 1.6;
 }
 
-footer .footer p {
+footer .footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px var(--section-padding-inline);
+}
+
+footer .footer .footer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+footer .footer p,
+footer .footer ul {
   margin: 0;
 }
 
-footer .footer p:last-child {
-  width: 100%;
-  font-size: 7px;
+footer .footer ul {
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer a:any-link {
+  color: var(--brand-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
   overflow-wrap: anywhere;
 }
 
+footer .footer a:focus-visible {
+  outline: 2px solid var(--brand-focus);
+  outline-offset: 2px;
+}
+
 footer .footer .footer-divider {
-  padding: 0 12px;
-  color: #b3bdb4;
+  padding: 0 10px;
+  color: var(--brand-line);
 }
 
 @media (width >= 600px) {
   footer .footer > div {
-    padding: 28px 5%;
-    font-size: 9px;
-    line-height: normal;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 16px 40px;
   }
 
-  footer .footer p:last-child {
-    width: auto;
-    max-width: 100%;
-    font-size: 8px;
-  }
-}
-
-@media (width >= 900px) {
-  footer .footer > div {
-    flex-wrap: nowrap;
-  }
-
-  footer .footer p:last-child {
-    max-width: 35%;
+  footer .footer .footer-group {
+    flex-flow: row wrap;
+    gap: 8px 32px;
   }
 }

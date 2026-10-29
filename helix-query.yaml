@@ -14,3 +14,12 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+      title:
+        select: main h1
+        value: textContent(el)
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "https:\/\/[^/]+(\/.*)")
+      archived:
+        select: head > meta[name="archived"]
+        value: attribute(el, "content")

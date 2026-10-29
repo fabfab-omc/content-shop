@@ -48,8 +48,8 @@
   --section-padding-block: 54px;
   --section-padding-inline: 7%;
 
-  /* nav height: no header yet; the temporary one measured 102px / 80px / 93px */
-  --nav-height: 0px;
+  /* nav height (reserved before the header loads to avoid layout shift) */
+  --nav-height: 64px;
 }
 
 @media (width >= 600px) {
@@ -69,6 +69,7 @@
 @media (width >= 900px) {
   :root {
     --heading-font-size-xxl: clamp(80px, 9.6vw, 150px);
+    --nav-height: 80px;
     --section-padding-block: 100px;
     --section-padding-inline: 7%;
   }

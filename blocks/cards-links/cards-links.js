@@ -32,7 +32,17 @@ function decorateArrow(link) {
 }
 
 /**
- * Opens links to other sites (e.g. AEM Assets Content Hub collections) in a new tab.
+ * Checks for an AEM Assets Content Hub link (experience.adobe.com/#/.../assets/contenthub/...).
+ * @param {URL} url The link URL
+ * @returns {boolean} True for Content Hub links
+ */
+function isContentHub(url) {
+  return url.hostname === 'experience.adobe.com' && /\/assets\/contenthub/i.test(url.hash);
+}
+
+/**
+ * Opens links to other sites in a new tab. Content Hub links stay in the same tab,
+ * so users can return with the browser's Back button instead of piling up tabs.
  * @param {HTMLAnchorElement} link The CTA link
  * @param {HTMLSpanElement} arrow The decorative arrow span
  */
@@ -44,6 +54,7 @@ function decorateExternal(link, arrow) {
     return;
   }
   if (!/^https?:$/.test(url.protocol) || url.origin === window.location.origin) return;
+  if (isContentHub(url)) return;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   if (arrow.textContent === '→') arrow.textContent = '↗';

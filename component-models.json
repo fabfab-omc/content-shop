@@ -154,6 +154,38 @@
     ]
   },
   {
+    "id": "campaign-list",
+    "fields": [
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "limit",
+        "label": "Number of campaigns (empty = all)"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "show",
+        "label": "Show",
+        "value": "current",
+        "options": [
+          {
+            "name": "Current campaigns",
+            "value": "current"
+          },
+          {
+            "name": "Archived campaigns",
+            "value": "archived"
+          },
+          {
+            "name": "All campaigns",
+            "value": "all"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "cards-campaigns-card",
     "fields": [
       {
