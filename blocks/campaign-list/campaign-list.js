@@ -60,6 +60,23 @@ function buildRow(entry) {
 }
 
 /**
+ * Hides an empty list with its heading: the whole section when the list is
+ * the section's only block, otherwise just the list and the heading right before it.
+ * @param {Element} block The block element
+ */
+function hideEmpty(block) {
+  const section = block.closest('.section');
+  if (section && section.querySelectorAll('.block').length === 1) {
+    section.classList.add('campaign-list-empty');
+    return;
+  }
+  const wrapper = block.parentElement;
+  const heading = wrapper.previousElementSibling?.lastElementChild;
+  if (heading?.matches('h1, h2, h3, h4, h5, h6')) heading.hidden = true;
+  wrapper.hidden = true;
+}
+
+/**
  * campaign-list: lists the published campaign pages (/campaigns/{name}/) from the query index.
  * Optional config rows: "Limit" (number of cards) and "Show" (current, archived or all).
  * @param {Element} block The block element
@@ -80,9 +97,9 @@ export default async function decorate(block) {
   if (limit) entries = entries.slice(0, limit);
 
   if (!entries.length) {
-    // nothing archived yet: hide the whole section, including its authored heading
+    // nothing archived yet: hide the list and its authored heading
     if (show === 'archived') {
-      block.closest('.section')?.classList.add('campaign-list-empty');
+      hideEmpty(block);
     } else {
       const empty = document.createElement('p');
       empty.className = 'campaign-list-message';
