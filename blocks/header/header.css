@@ -77,6 +77,16 @@ header .nav-sections a::after {
   transition: width 0.2s;
 }
 
+/* "(opens in a new tab)" for screen readers on external links */
+header .nav-sections .nav-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 header .nav-sections a:hover::after,
 header .nav-sections a.nav-current::after {
   width: 100%;

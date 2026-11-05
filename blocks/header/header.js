@@ -59,6 +59,21 @@ function markCurrent(links) {
 }
 
 /**
+ * Opens links to other sites (e.g. Content Hub, Workfront) in a new tab.
+ * @param {HTMLAnchorElement} link The navigation link
+ */
+function decorateExternal(link) {
+  const url = new URL(link.href, window.location.href);
+  if (!/^https?:$/.test(url.protocol) || url.origin === window.location.origin) return;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  const hint = document.createElement('span');
+  hint.className = 'nav-hint';
+  hint.textContent = ' (opens in a new tab)';
+  link.append(hint);
+}
+
+/**
  * loads and decorates the header: logo plus the authored navigation links
  * (nav document: section 1 = logo, section 2 = list of links)
  * @param {Element} block The header block element
@@ -83,6 +98,7 @@ export default async function decorate(block) {
     list.className = 'nav-sections';
     sections.querySelectorAll('a[href]').forEach((a) => {
       a.className = '';
+      decorateExternal(a);
       const li = document.createElement('li');
       li.append(a);
       list.append(li);
