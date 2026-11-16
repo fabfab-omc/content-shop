@@ -110,6 +110,28 @@ export function decorateButtons(main) {
 }
 
 /**
+ * Opens links to PDF files (e.g. campaign handbooks) in a new tab.
+ * @param {HTMLElement} main The main container element
+ */
+function decoratePdfLinks(main) {
+  main.querySelectorAll('a[href]').forEach((a) => {
+    let url;
+    try {
+      url = new URL(a.href, window.location.href);
+    } catch {
+      return;
+    }
+    if (!/\.pdf$/i.test(url.pathname)) return;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    const hint = document.createElement('span');
+    hint.className = 'link-hint';
+    hint.textContent = ' (opens in a new tab)';
+    a.append(hint);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -120,6 +142,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  decoratePdfLinks(main);
 }
 
 /**

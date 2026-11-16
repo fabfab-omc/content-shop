@@ -149,6 +149,16 @@ a:focus-visible {
   outline-offset: 7px;
 }
 
+/* "(opens in a new tab)" for screen readers on PDF links */
+main a .link-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* buttons: the source has no button styling, links render as plain text */
 main .button-wrapper {
   display: inline;
